@@ -14,6 +14,10 @@ public class ServicoContrato {
 	
 	private ServicoPagamentoOnline servicoPagamento;
 	
+	public ServicoContrato(ServicoPagamentoOnline servicoPagamento) {
+		this.servicoPagamento = servicoPagamento;
+	}
+
 	public void processarContrato(Contrato contrato, Integer meses) {
 		
 		servicoPagamento = new Paypal();
@@ -35,7 +39,7 @@ public class ServicoContrato {
 					servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i) 
 					+ servicoPagamento.taxaPagamento(servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i)));
 			
-			contrato.adicionarParcelasContrato(parcelamento);
+			contrato.getParcelasDoContrato().add(parcelamento);
 			
 		}		
 

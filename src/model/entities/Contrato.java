@@ -3,13 +3,14 @@ package model.entities;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Contrato {
 
 	private int numeroContrato;
 	private Date dataContrato;
 	private Double valorTotalContrato;
-	private ArrayList<Parcelamento> parcelasDoContrato = new ArrayList<>();
+	private List<Parcelamento> parcelasDoContrato = new ArrayList<>();
 
 	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -42,9 +43,9 @@ public class Contrato {
 	public void setValorTotalContrato(Double valorTotalContrato) {
 		this.valorTotalContrato = valorTotalContrato;
 	}
-
-	public void adicionarParcelasContrato(Parcelamento parcela) {
-		parcelasDoContrato.add(parcela);
+	
+	public List<Parcelamento> getParcelasDoContrato() {
+		return parcelasDoContrato;
 	}
 
 	@Override
