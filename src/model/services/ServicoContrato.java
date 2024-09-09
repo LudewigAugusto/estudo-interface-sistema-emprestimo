@@ -8,40 +8,35 @@ import java.util.Date;
 
 import model.entities.Contrato;
 import model.entities.Parcelamento;
-import model.entities.Paypal;
 
 public class ServicoContrato {
-	
+
 	private ServicoPagamentoOnline servicoPagamento;
-	
+
 	public ServicoContrato(ServicoPagamentoOnline servicoPagamento) {
 		this.servicoPagamento = servicoPagamento;
 	}
 
 	public void processarContrato(Contrato contrato, Integer meses) {
-		
-		servicoPagamento = new Paypal();
-		
+
 		Date dataInicial = contrato.getDataContrato();
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(dataInicial);
-		
+
 		for (int i = 1; i <= meses; i++) {
-			
-			// FOR PARA IR ADICIONANDO O MËS
+
 			calendar.add(Calendar.MONTH, 1);
 			Date novaData = calendar.getTime();
+			double parcelaBase = contrato.getValorTotalContrato()/meses;
+			double juros = servicoPagamento.juros(parcelaBase, i);
+			double taxaPagamento = servicoPagamento.taxaPagamento(parcelaBase + juros);
+			double valorParcela = taxaPagamento + juros + parcelaBase;
 			
-			Parcelamento parcelamento = new Parcelamento(
-					// DATA COM O MÊS ADICIONADO
-					novaData,
-					// CALCULO DO VALOR DA PARCELA PASSANDO COMO PARÂMETROS OS CÁLCULOS DA CLASSE PAYPAL
-					servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i) 
-					+ servicoPagamento.taxaPagamento(servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i)));
-			
-			contrato.getParcelasDoContrato().add(parcelamento);
-			
-		}		
+			Parcelamento parcelamento = new Parcelamento(novaData, valorParcela);
 
-	}	
+			contrato.getParcelasDoContrato().add(parcelamento);
+
+		}
+
+	}
 }

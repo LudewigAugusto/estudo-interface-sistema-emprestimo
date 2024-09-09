@@ -8,7 +8,7 @@ public class Parcelamento {
 	private Date dataVencimentoParcela;
 	private Double valorParcela;
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Parcelamento(Date dataVencimentoParcela, Double valorParcela) {
 		this.dataVencimentoParcela = dataVencimentoParcela;

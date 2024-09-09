@@ -7,7 +7,7 @@ public class Paypal implements ServicoPagamentoOnline {
 	// CALCULA A TAXA DE JUROS (1% AO MÊS)
 	@Override
 	public Double juros(Double valorParcela, Integer meses) {		
-		return valorParcela + (valorParcela * (0.01 * meses));
+		return valorParcela * (0.01 * meses);
 	}
 
 	// CALCULA A TAXA DE PAGAMENTO MENSAL (2% POR PAGAMENTO)

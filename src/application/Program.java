@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import model.entities.Contrato;
+import model.entities.Paypal;
 import model.services.ServicoContrato;
 
 public class Program {
@@ -34,7 +35,7 @@ public class Program {
 		
 		Contrato contrato = new Contrato(numero, data, valorTotalContrato);
 		
-		ServicoContrato service = new ServicoContrato();
+		ServicoContrato service = new ServicoContrato(new Paypal());
 		
 		service.processarContrato(contrato, parcelas);
 		

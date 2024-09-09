@@ -1,6 +1,5 @@
 package model.entities;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,8 +10,6 @@ public class Contrato {
 	private Date dataContrato;
 	private Double valorTotalContrato;
 	private List<Parcelamento> parcelasDoContrato = new ArrayList<>();
-
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	public Contrato(int numeroContrato, Date dataContrato, Double valorTotalContrato) {
 		this.numeroContrato = numeroContrato;
