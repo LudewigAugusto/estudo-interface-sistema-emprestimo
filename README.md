@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/75c082ce-f41b-450e-b3c2-217c906a98f4)# estudo-interface-sistema-emprestimo
 Sistema que calcula o parcelamento de um contrato.
 
 Exercício proposto no curso "Java COMPLETO Programação Orientada a Objetos + Projetos", pelo professor Nélio Alves.
