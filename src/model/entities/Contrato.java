@@ -1,20 +1,22 @@
 package model.entities;
 
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Contrato {
-	
+
 	private int numeroContrato;
-	private DateTimeFormatter dataContrato;
+	private Date dataContrato;
 	private Double valorTotalContrato;
-	private int parcelamentoContrato;
-	
-	public Contrato(int numeroContrato, DateTimeFormatter dataContrato, Double valorTotalContrato, int parcelamentoContrato) {
+	private ArrayList<Parcelamento> parcelasDoContrato = new ArrayList<>();
+
+	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+	public Contrato(int numeroContrato, Date dataContrato, Double valorTotalContrato) {
 		this.numeroContrato = numeroContrato;
 		this.dataContrato = dataContrato;
 		this.valorTotalContrato = valorTotalContrato;
-		this.parcelamentoContrato = parcelamentoContrato;
-		
 	}
 
 	public int getNumeroContrato() {
@@ -25,11 +27,11 @@ public class Contrato {
 		this.numeroContrato = numeroContrato;
 	}
 
-	public DateTimeFormatter getDataContrato() {
+	public Date getDataContrato() {
 		return dataContrato;
 	}
 
-	public void setDataContrato(DateTimeFormatter dataContrato) {
+	public void setDataContrato(Date dataContrato) {
 		this.dataContrato = dataContrato;
 	}
 
@@ -40,14 +42,20 @@ public class Contrato {
 	public void setValorTotalContrato(Double valorTotalContrato) {
 		this.valorTotalContrato = valorTotalContrato;
 	}
-	
-	public int getParcelamentoContrato() {
-		return parcelamentoContrato;
+
+	public void adicionarParcelasContrato(Parcelamento parcela) {
+		parcelasDoContrato.add(parcela);
 	}
 
-	public void setParcelamentoContrato(int parcelamentoContrato) {
-		this.parcelamentoContrato = parcelamentoContrato;
+	@Override
+	public String toString() {
+		StringBuilder stb = new StringBuilder();
+		stb.append("\nParcelas : \n");
+		for (Parcelamento parcela : parcelasDoContrato) {
+			stb.append(parcela.toString() + "\n");
+		}
+
+		return stb.toString();
 	}
-	
 
 }
