@@ -32,9 +32,8 @@ public class ServicoContrato {
 					// DATA COM O MÊS ADICIONADO
 					novaData,
 					// CALCULO DO VALOR DA PARCELA PASSANDO COMO PARÂMETROS OS CÁLCULOS DA CLASSE PAYPAL
-					contrato.getValorTotalContrato()/meses
-					+ servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i) 
-					+ servicoPagamento.taxaPagamento(servicoPagamento.juros(contrato.getValorTotalContrato()/meses, i)));
+					servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i) 
+					+ servicoPagamento.taxaPagamento(servicoPagamento.juros((contrato.getValorTotalContrato()/meses), i)));
 			
 			contrato.adicionarParcelasContrato(parcelamento);
 			
